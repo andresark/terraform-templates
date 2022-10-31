@@ -36,15 +36,6 @@ data "aws_iam_policy_document" "state_terraform_s3" {
       "${aws_s3_bucket.state_terraform_s3.arn}",
       "${aws_s3_bucket.state_terraform_s3.arn}/*",
     ]
-    condition {
-      test     = "StringNotLike"
-      variable = "aws:userId"
-
-      values = [
-        var.user_test,
-        var.user_root,
-
-      ]
     }
   }
 
